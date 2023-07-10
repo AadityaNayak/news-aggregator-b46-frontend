@@ -23,7 +23,7 @@ function Login() {
   async function submitData(event) {
     event.preventDefault();
     event.stopPropagation();
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch(`${process.env.REACT_APP_BACKEND}/login`, {
       method: "post",
       body: JSON.stringify(formData),
       headers: {

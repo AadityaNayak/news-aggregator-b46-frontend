@@ -32,7 +32,7 @@ const UpdateUser = () => {
     let userID = JSON.parse(localStorage.getItem("user"))._id;
     let formData_with_userID = { ...formData, userID: userID };
 
-    let result = await fetch(`http://localhost:5000/update`, {
+    let result = await fetch(`${process.env.REACT_APP_BACKEND}/update`, {
       method: "put",
       body: JSON.stringify(formData_with_userID),
       headers: {
@@ -47,7 +47,7 @@ const UpdateUser = () => {
       alert("User info Updated");
     }
 
-    result = await fetch(`http://localhost:5000/user`, {
+    result = await fetch(`${process.env.REACT_APP_BACKEND}/user`, {
       method: "put",
       body: JSON.stringify(formData_with_userID),
       headers: {

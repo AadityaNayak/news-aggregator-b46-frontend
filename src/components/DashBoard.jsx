@@ -31,7 +31,7 @@ const Dashboard = () => {
         "NOTE: The Account will be permanetly deleted on this confirmation.\nAre you sure?"
       ) == true
     ) {
-      let result = await fetch(`http://localhost:5000/delete`, {
+      let result = await fetch(`${process.env.REACT_APP_BACKEND}/delete`, {
         method: "delete",
         body: JSON.stringify({ userID: userID }),
         headers: {
@@ -51,26 +51,6 @@ const Dashboard = () => {
       alert("Error in deleting account");
     }
 
-    // result = await result.json();
-    // console.log(result);
-    // if (result.modifiedCount > 0) {
-    //   alert("User info Updated");
-    // }
-
-    // result = await fetch(`http://localhost:5000/user`, {
-    //   method: "put",
-    //   body: JSON.stringify(formData_with_userID),
-    //   headers: {
-    //     "Content-type": "application/json",
-    //     authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-    //   },
-    // });
-
-    // result = await result.json();
-
-    // // store user info in local storage
-    // localStorage.setItem("user", JSON.stringify(result));
-    // navigate("/");
   }
 
   return (

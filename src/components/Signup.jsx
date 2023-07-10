@@ -28,7 +28,7 @@ function SignUp() {
   async function submitData(event) {
     event.preventDefault();
     event.stopPropagation();
-    let result = await fetch("http://localhost:5000/signup", {
+    let result = await fetch(`${process.env.REACT_APP_BACKEND}/signup`, {
       method: "post",
       body: JSON.stringify(formData),
       headers: {
