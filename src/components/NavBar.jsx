@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import style from "../styles/nav.css";
 import $ from "jquery";
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 
 function NavBar(props) {
   let navigate = useNavigate();
@@ -28,7 +34,7 @@ function NavBar(props) {
     }
   });
 
-  function searchHandle(event){
+  function searchHandle(event) {
     let val = event.target.value;
     setSearchValue(val);
   }
@@ -47,8 +53,7 @@ function NavBar(props) {
     <div style={style}>
       <section className="navigation">
         <div className="nav-container">
-          <div className="brand">
-          </div>
+          <div className="brand"></div>
           <nav>
             <div className="nav-mobile">
               <button id="nav_toggle" href="#">
@@ -56,37 +61,82 @@ function NavBar(props) {
               </button>
             </div>
             <ul className="nav_list" id="nav_list">
-              {/* <!-- Setting the links to #! will ensure that no action takes place on click. --> */}
-              {auth?<li>
-                <input type="text" id="nav-search" placeholder="Search" onChange={(event) => searchHandle(event)}
-          onKeyDown={(event) => {
-            searchNewsEnter(event);
-          }}/>
-              </li>:""}
+              {auth ? (
+                <li>
+                  <input
+                    type="text"
+                    id="nav-search"
+                    placeholder="Search"
+                    onChange={(event) => searchHandle(event)}
+                    onKeyDown={(event) => {
+                      searchNewsEnter(event);
+                    }}
+                  />
+                </li>
+              ) : (
+                ""
+              )}
               <li>
-              <a href="/">Top News</a>
+                <a href="/">Top News</a>
               </li>
-              <li>
-              {auth?<a href="/entertainment">Entertainment</a>:""}
-              </li>
-              <li>
-              {auth?<a href="/business">Business</a>:""}
-              </li>
-              <li>
-                {auth?<a href="/science">Science</a>:""}
-              </li>
-              <li>
-                {auth?<a href="/technology">Technology</a>:""}
-              </li>
-              <li>
-                {auth==null? <a href="/signup" style={{backgroundColor: "#383f51"}}>Sign Up</a>:""}
-              </li>
-              <li>
-                {auth == null? <a href="/login" style={{backgroundColor: "#383f51"}}>Log in</a>:""}
-              </li>
-              <li>
-              {auth?<a href="/dashboard "><i class="fa-solid fa-user" style={{color: "#ff3a24"}}></i></a>:""}
-              </li>
+              {auth ? (
+                <li>
+                  <a href="/entertainment">Entertainment</a>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth ? (
+                <li>
+                  <a href="/business">Business</a>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth ? (
+                <li>
+                  <a href="/science">Science</a>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth ? (
+                <li>
+                  <a href="/technology">Technology</a>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth == null ? (
+                <li>
+                  <a href="/signup" style={{ backgroundColor: "#383f51" }}>
+                    Sign Up
+                  </a>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth == null ? (
+                <li>
+                  <a href="/login" style={{ backgroundColor: "#383f51" }}>
+                    Log in
+                  </a>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth ? (
+                <li>
+                  <a href="/dashboard ">
+                    <i
+                      class="fa-solid fa-user"
+                      style={{ color: "#ff3a24" }}
+                    ></i>
+                  </a>
+                </li>
+              ) : (
+                ""
+              )}
               {/* <li><a href="/">Contact Me</a></li> */}
             </ul>
           </nav>
